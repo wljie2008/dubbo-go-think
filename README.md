@@ -1,4 +1,4 @@
-# Dubbo go think
+# Dubbo Go Think
 尝试着去熟悉 `dubbo-go` 的源码
 ## 参考
 [dubbo-go](https://github.com/apache/dubbo-go.git)  
@@ -35,10 +35,6 @@
 ```shell
 brew info zookeeper
 brew install zookeeper
-# 或者
-docker search zookeeper
-docker pull zookeeper
-
 
 ```
 
@@ -48,19 +44,29 @@ docker pull zookeeper
 
 目录组织
 
-```
-├── app								# 源码
-├── assembly					# 可选的针对特定系统环境的 `build` 脚本
+```shell
+├── app # 源码
+├── assembly # 可选的针对特定系统环境的 `build` 脚本
 │   ├── bin
 │   ├── common
 │   ├── linux
 │   ├── mac
 │   └── windows
-└── profiles						# 配置文件	
+└── profiles # 配置文件	
     ├── dev
     ├── release
     └── test
 ```
 
-切换到`app`目录下
+分别切换到`server`和`client`下的`app`目录下,需要配置环境变量`CONF_PROVIDER_FILE_PATH` 和 `APP_LOG_CONF_FILE`
+
+```shell
+ export CONF_PROVIDER_FILE_PATH="../profiles/dev/server.yml" 
+ export APP_LOG_CONF_FILE="../profiles/dev/log.yml"
+ export GOPROXY="http://goproxy.io"
+ go run .
+
+```
+
+
 
